@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#84fab0">
+    <meta name="description" content="Generate QR codes from URLs easily with our free QR code generator">
+    <title>QR Code Generator - Free Online Tool</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+            min-height: 100vh;
+        }
+        @media (max-width: 640px) {
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            .qr-container {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            .qr-image {
+                width: 100%;
+                max-width: 250px;
+                height: auto;
+            }
+        }
+        /* Add touch-friendly tap targets for mobile */
+        button, a {
+            min-height: 44px;
+            min-width: 44px;
+        }
+        /* Prevent zoom on input focus for iOS */
+        input[type="url"] {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body class="gradient-bg">
+    <div class="container mx-auto px-4 py-4 sm:py-8">
+        <div class="max-w-2xl mx-auto">
+            <header class="text-center mb-6 sm:mb-8">
+                <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-2">QR Code Generator</h1>
+                <p class="text-gray-600 text-sm sm:text-base">Generate QR codes instantly from any URL</p>
+            </header>
+            
+            <div class="bg-white rounded-lg shadow-xl p-4 sm:p-6 mb-6 sm:mb-8">
+                <form method="POST" class="space-y-4">
+                    <div>
+                        <label for="url" class="block text-sm font-medium text-gray-700 mb-2">Enter URL</label>
+                        <input type="url" 
+                               name="url" 
+                               id="url" 
+                               value="{{ url if url else '' }}"
+                               required 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base"
+                               placeholder="https://example.com"
+                               autocomplete="off"
+                               inputmode="url">
+                    </div>
+                    <button type="submit" 
+                            class="w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors text-base font-medium">
+                        Generate QR Code
+                    </button>
+                </form>
+            </div>
+
+            {% if qr_code %}
+            <div class="bg-white rounded-lg shadow-xl p-4 sm:p-6 text-center qr-container">
+                <h2 class="text-lg sm:text-xl font-semibold text-gray-800 mb-4">Your QR Code</h2>
+                <div class="flex justify-center mb-4">
+                    <img src="{{ qr_code }}" 
+                         alt="Generated QR Code" 
+                         class="qr-image border border-gray-200 rounded-lg shadow-sm">
+                </div>
+                <div class="space-y-3">
+                    <a href="{{ qr_code }}" 
+                       download 
+                       class="inline-block w-full sm:w-auto bg-green-600 text-white py-3 px-6 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors text-base font-medium">
+                        Download QR Code
+                    </a>
+                    <button onclick="window.location.reload()" 
+                            class="inline-block w-full sm:w-auto bg-gray-600 text-white py-3 px-6 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors text-base font-medium">
+                        Generate New Code
+                    </button>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <footer class="text-center text-gray-600 py-4 mt-8">
+        <p class="text-sm">Made with ❤️ using Flask and qrcode</p>
+        <p class="text-xs mt-1">Free and open source QR code generator</p>
+    </footer>
+</body>
+</html> 
