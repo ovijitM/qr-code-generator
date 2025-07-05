@@ -3,7 +3,7 @@
 A modern, responsive web application that allows users to generate QR codes from URLs. Built with Flask and qrcode library, featuring a beautiful UI and mobile-first design.
 
 ![QR Code Generator](https://img.shields.io/badge/QR-Code%20Generator-blue)
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
 ![Flask](https://img.shields.io/badge/Flask-2.3.3-green)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
@@ -25,10 +25,10 @@ Visit the live demo: [QR Code Generator](https://your-demo-url.com)
 ## 🛠️ Technology Stack
 
 - **Backend:**
-  - Python 3.8+
+  - Python 3.9+
   - Flask 2.3.3
   - qrcode 7.4.2
-  - Pillow 9.5.0
+  - Pillow 10.0.1
 
 - **Frontend:**
   - HTML5
@@ -38,7 +38,7 @@ Visit the live demo: [QR Code Generator](https://your-demo-url.com)
 
 ## 📋 Prerequisites
 
-- Python 3.8 or higher
+- Python 3.9 or higher
 - pip (Python package installer)
 - Virtual environment (recommended)
 
